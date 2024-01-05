@@ -1,0 +1,92 @@
+[tool.poetry]
+name = "recipes"
+version = "0.1.0"
+description = ""
+authors = ["Alexandre Morignot <amorignot@meilleursagents.com>"]
+readme = "README.md"
+
+[tool.poetry.scripts]
+server = "recipes.server:run"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+fastui = "^0.4.0"
+fastapi = "^0.108.0"
+uvicorn = "^0.25.0"
+python-multipart = "^0.0.6"
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.1.11"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+line-length = 88
+indent-width = 4
+target-version = "py39"
+
+[tool.ruff.lint]
+select = [
+    # pycodestyle
+  "E", "W",
+  # Pyflakes
+  "F",
+  # flake8-bugbear
+  "B",
+  # pydocstyle
+  "D",
+  # flake8-logging-format
+  "G",
+  # isort
+  "I",
+  # mcabbe
+  "C90",
+  # pep8-naming
+  "N",
+  # flake8-comprehensions
+  "C4",
+  # flake8-datetimez
+  #"DTZ",
+  # flake8-simplify
+  "SIM",
+  # flake8-debugger
+  "T",
+  # flake8-pie
+  "PIE",
+  # flake8-upgrade
+  "UP",
+  # Ruff-specific rules
+  "RUF",
+]
+ignore = [
+  # missing docstrings
+  "D100", "D101", "D102", "D103", "D104", "D105", "D106", "D107",
+  # one-blank-line-before-class
+  "D203",
+  # multi-line-summary-first-line
+  "D212",
+]
+
+[tool.ruff.isort]
+combine-as-imports = true
+extra-standard-library = ["zoneinfo"]
+lines-after-imports = 2
+section-order = [
+  "future",
+  "standard-library",
+  "third-party",
+  "first-party",
+  "tests",
+  "local-folder",
+]
+
+[tool.ruff.isort.sections]
+tests = ["tests"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+#magic-trailing-comma = "respect"
+line-ending = "auto"
